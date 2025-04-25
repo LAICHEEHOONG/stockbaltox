@@ -7380,13 +7380,12 @@ function highLightBundleText() {
   updateHighlight(highLightText5Y(arr5YNotYetHeighligh));
 }
 
-
 function loadIframe(url, width = "100%", height = "100%") {
   // Clear the entire body content
   document.body.innerHTML = "";
 
   // Create the iframe element
-  const iframe = document.createElement('iframe');
+  const iframe = document.createElement("iframe");
 
   // Set attributes
   iframe.src = url;
@@ -7399,6 +7398,9 @@ function loadIframe(url, width = "100%", height = "100%") {
   iframe.style.width = width;
   iframe.style.height = height;
 
+  // 💡 Allow clipboard access
+  iframe.setAttribute("allow", "clipboard-write; clipboard-read; same-origin");
+
   // Append the iframe to the body
   document.body.appendChild(iframe);
 }
@@ -7410,7 +7412,7 @@ function clickQuotation() {
   const priceTagButton = document.getElementById("price-tag-button");
 
   quotation.addEventListener("click", () => {
-    loadIframe("https://stockbalx.vercel.app/")
+    loadIframe("https://stockbalx.vercel.app/");
     // playClickSound();
     // quotation.classList.toggle("quotation-icon");
 
@@ -7436,11 +7438,10 @@ function clickQuotation() {
 function clickThumbsUp() {
   let idThumbsUp = document.getElementById("thumbs-up");
   idThumbsUp.addEventListener("click", () => {
-    loadIframe("https://stockbalx.vercel.app/")
+    loadIframe("https://stockbalx.vercel.app/");
 
     // playClickSound();
     // hiddenThumbsUp();
     // voucherPrice();
-
   });
 }
