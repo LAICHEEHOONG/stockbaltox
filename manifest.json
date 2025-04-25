@@ -14,8 +14,7 @@
     "content_scripts": [
         {
             "matches": [
-                "http://stockbal.phcocap.com/*",
-                "https://www.allcareok.com/*"
+                "http://stockbal.phcocap.com/*"
             ],
             "js": ["main.js"],
             "css": ["style.css"]
