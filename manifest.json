@@ -29,8 +29,6 @@
     "https://www.gstatic.com/",
     "https://*.firebaseio.com",
     "https://www.googleapis.com",
-    "https://www.googletagmanager.com",
-    "clipboardRead",
-    "clipboardWrite"
+    "https://www.googletagmanager.com"
   ]
 }
