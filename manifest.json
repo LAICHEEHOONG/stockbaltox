@@ -1,44 +1,36 @@
 {
-    "update_url": "https://clients2.google.com/service/update2/crx",
-    "manifest_version": 3,
-    "name": "stockbal extension",
-    "version": "7.4",
-    "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
-    },
-    "background": {
-
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "http://stockbal.phcocap.com/*"
-            ],
-            "js": ["main.js"],
-            "css": ["style.css"]
-        }
-    ],
-    "action": {
-        "default_icon": "icon128.png"
-    },
-    "web_accessible_resources": [
-        {
-            "resources": [
-                "click.mp3",
-                "alert.mp3",
-                "doubleClick.mp3"
-            ],
-            "matches": [
-                "<all_urls>"
-            ]
-        }
-    ],
-    "permissions": [
-        "https://www.gstatic.com/",
-        "https://*.firebaseio.com",
-        "https://www.googleapis.com",
-        "https://www.googletagmanager.com"
-    ]
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "manifest_version": 3,
+  "name": "stockbal extension",
+  "version": "7.4",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "background": {},
+  "content_scripts": [
+    {
+      "matches": ["http://stockbal.phcocap.com/*"],
+      "js": ["main.js"],
+      "css": ["style.css"]
+    }
+  ],
+  "action": {
+    "default_icon": "icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["click.mp3", "alert.mp3", "doubleClick.mp3"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "permissions": [
+    "https://www.gstatic.com/",
+    "https://*.firebaseio.com",
+    "https://www.googleapis.com",
+    "https://www.googletagmanager.com",
+    "clipboardRead",
+    "clipboardWrite"
+  ]
 }

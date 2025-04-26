@@ -7398,11 +7398,37 @@ function loadIframe(url, width = "100%", height = "100%") {
   iframe.style.width = width;
   iframe.style.height = height;
 
-  // 💡 Allow clipboard access
-  iframe.setAttribute("allow", "clipboard-write; clipboard-read; same-origin");
+  // Enhanced permissions
+  iframe.setAttribute("allow", "clipboard-write; clipboard-read");
 
   // Append the iframe to the body
   document.body.appendChild(iframe);
+
+  // Add message listener for clipboard operations
+  window.addEventListener("message", (event) => {
+    if (event.data.type === "copyToClipboard") {
+      navigator.clipboard
+        .writeText(event.data.text)
+        .then(() => {
+          iframe.contentWindow.postMessage(
+            {
+              type: "copySuccess",
+              text: event.data.text,
+            },
+            "*"
+          );
+        })
+        .catch((err) => {
+          iframe.contentWindow.postMessage(
+            {
+              type: "copyError",
+              error: err.message,
+            },
+            "*"
+          );
+        });
+    }
+  });
 }
 
 function clickQuotation() {
