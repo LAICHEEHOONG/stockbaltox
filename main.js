@@ -7438,8 +7438,8 @@ function clickQuotation() {
   const priceTagButton = document.getElementById("price-tag-button");
 
   quotation.addEventListener("click", () => {
-    // loadIframe("https://stockbalx.vercel.app/");
-    loadIframe("http://192.168.5.109:3000");
+    loadIframe("https://stockbalx.vercel.app/");
+    // loadIframe("http://192.168.5.118:3000/");
 
     // playClickSound();
     // quotation.classList.toggle("quotation-icon");
@@ -7466,8 +7466,9 @@ function clickQuotation() {
 function clickThumbsUp() {
   let idThumbsUp = document.getElementById("thumbs-up");
   idThumbsUp.addEventListener("click", () => {
-    // loadIframe("https://stockbalx.vercel.app/");
-    loadIframe("http://192.168.5.109:3000");
+    loadIframe("https://stockbalx.vercel.app/");
+    // loadIframe("http://192.168.5.118:3000/");
+    
 
     // playClickSound();
     // hiddenThumbsUp();
