@@ -1,7 +1,14 @@
-body {
+/* body {
   padding: 35px 20px;
   text-align: center;
   font-weight: bolder;
+} */
+td {
+  font-size: 1.7rem;
+}
+
+th {
+  font-size: 1.8rem;
 }
 
 #quotation-container {
@@ -34,15 +41,14 @@ body {
   padding: 50px;
 }
 
-td {
+/* td {
   text-align: center;
   font-size: 2rem;
-  /* font-weight: bold; */
 }
 
 th {
   font-size: 2rem;
-}
+} */
 
 .tableFixHead {
   overflow-y: auto;

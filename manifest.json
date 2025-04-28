@@ -2,7 +2,7 @@
   "update_url": "https://clients2.google.com/service/update2/crx",
   "manifest_version": 3,
   "name": "stockbal extension",
-  "version": "7.4",
+  "version": "7.5",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",

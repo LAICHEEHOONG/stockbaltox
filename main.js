@@ -4806,9 +4806,9 @@ function jsbarcodeLink() {
   ]);
 }
 
-jsbarcodeLink();
+// jsbarcodeLink();
 
-console.log("stock status extension 7.4 beta stockbalx");
+console.log("stock status extension 7.5 v1 and v2");
 
 const clickSound = new Audio(chrome.runtime.getURL("click.mp3"));
 const alertSound = new Audio(chrome.runtime.getURL("alert.mp3"));
@@ -5637,36 +5637,36 @@ function hiddenEye() {
   eye.style.display = "none";
 }
 
-// function clickQuotation() {
-//   const quotation = document.getElementById("quotation-back-button");
-//   const nav = document.querySelector("nav");
-//   const tBody = document.querySelector("tbody");
-//   const priceTagButton = document.getElementById("price-tag-button");
+function clickQuotation() {
+  const quotation = document.getElementById("quotation-back-button");
+  const nav = document.querySelector("nav");
+  const tBody = document.querySelector("tbody");
+  const priceTagButton = document.getElementById("price-tag-button");
 
-//   quotation.addEventListener("click", () => {
-//     playClickSound();
-//     quotation.classList.toggle("quotation-icon");
+  quotation.addEventListener("click", () => {
+    playClickSound();
+    quotation.classList.toggle("quotation-icon");
 
-//     hiddenEye();
+    hiddenEye();
 
-//     priceTagButton.style.display = "none";
-//     tBody.innerHTML = "";
+    priceTagButton.style.display = "none";
+    tBody.innerHTML = "";
 
-//     if (quotation.innerHTML === "") {
-//       insertQuotationTable();
-//     }
+    if (quotation.innerHTML === "") {
+      insertQuotationTable();
+    }
 
-//     quotation.setAttribute(
-//       "class",
-//       "btn btn-default btn-search btn-danger quotation-to-back quotation-back"
-//     );
-//     quotation.innerHTML = "Back";
-//     quotation.setAttribute("id", "");
-//     backToQuotation();
-//     eanToButtonClass = "ean-to-button";
-//     // insertDataToQuotationTable();
-//   });
-// }
+    quotation.setAttribute(
+      "class",
+      "btn btn-default btn-search btn-danger quotation-to-back quotation-back"
+    );
+    quotation.innerHTML = "Back";
+    quotation.setAttribute("id", "");
+    backToQuotation();
+    eanToButtonClass = "ean-to-button";
+    // insertDataToQuotationTable();
+  });
+}
 
 function backToPriceTagPage() {
   const back = document.querySelector("#price-tag-button");
@@ -6852,23 +6852,102 @@ function renderFirebaseDataToQuotationTable(objData) {
   }, 1000);
 }
 
-moveOriginalBody();
-searchButtonOnClick();
-switchNumberBigToSmallOrSmallToBig();
-filterInputOnChangeHandle();
-clickHeadAddDecorationUnderline();
-googleFont();
-clickMoveToTop();
-clickQuotation();
-blockGoToBack();
-clickPriceTag();
-autoClickHighLight("p05");
-eyeOnClick();
+function applyStyles() {
+  document.body.style.padding = "35px 20px";
+  // document.body.style.textAlign = "center";
+  document.body.style.fontWeight = "bolder";
 
-setInterval(() => {
-  removeBugOldHeader();
-}, 3000);
+  // var tds = document.querySelectorAll("td");
+  // tds.forEach(function (td) {
+  //   // td.style.textAlign = 'center';
+  //   td.style.fontSize = "2rem";
+  // });
 
+  // var ths = document.querySelectorAll("th");
+  // ths.forEach(function (th) {
+  //   th.style.fontSize = "2rem";
+  // });
+}
+
+function runV1() {
+  jsbarcodeLink();
+  moveOriginalBody();
+  searchButtonOnClick();
+  switchNumberBigToSmallOrSmallToBig();
+  filterInputOnChangeHandle();
+  clickHeadAddDecorationUnderline();
+  googleFont();
+  clickMoveToTop();
+  clickQuotation();
+  blockGoToBack();
+  clickPriceTag();
+  autoClickHighLight("p05");
+  eyeOnClick();
+  clickThumbsUp();
+
+  setInterval(() => {
+    removeBugOldHeader();
+  }, 3000);
+  applyStyles();
+}
+
+function runV2() {
+  moveOriginalBody();
+  loadIframe("https://stockbalx.vercel.app/");
+}
+
+// function insertStickyButton() {
+//   // 创建按钮元素
+//   var button = document.createElement("button");
+//   button.id = "stickyButton";
+//   button.className = "btn btn-primary";
+//   button.innerText = "V1";
+
+//   // 设置按钮的固定位置样式
+//   button.style.position = "fixed";
+//   button.style.bottom = "20px";
+//   button.style.right = "20px";
+//   button.style.zIndex = "9999";
+
+//   // 按钮点击时运行 applyStyles
+//   button.addEventListener("click", runV1);
+
+//   // 把按钮加到页面 body 上
+//   document.body.appendChild(button);
+// }
+function insertStickyButtons() {
+  // 创建容器元素
+  var container = document.createElement("div");
+  container.id = "stickyButtonContainer";
+  container.style.position = "fixed";
+  container.style.bottom = "20px";
+  container.style.right = "20px";
+  container.style.zIndex = "9999";
+  container.style.display = "flex";
+  container.style.gap = "10px"; // 两个按钮之间的间距
+
+  // 创建 V1 按钮
+  var buttonV1 = document.createElement("button");
+  buttonV1.id = "stickyButtonV1";
+  buttonV1.className = "btn btn-primary";
+  buttonV1.innerText = "V1";
+  buttonV1.addEventListener("click", runV1);
+
+  // 创建 V2 按钮
+  var buttonV2 = document.createElement("button");
+  buttonV2.id = "stickyButtonV2";
+  buttonV2.className = "btn btn-success"; // 给 V2 一个绿色的样式，也可以用 btn-primary
+  buttonV2.innerText = "V2";
+  buttonV2.addEventListener("click", runV2);
+
+  // 把两个按钮加到容器里
+  container.appendChild(buttonV1);
+  container.appendChild(buttonV2);
+
+  // 把容器加到页面 body 上
+  document.body.appendChild(container);
+}
+insertStickyButtons();
 //Get the button
 var mybutton = document.getElementById("myBtn");
 
@@ -6905,16 +6984,16 @@ function hiddenThumbsUp() {
   idThumbsUp.classList.add("thumbs-up-display");
 }
 
-// function clickThumbsUp() {
-//   let idThumbsUp = document.getElementById("thumbs-up");
-//   idThumbsUp.addEventListener("click", () => {
-//     playClickSound();
-//     hiddenThumbsUp();
-//     voucherPrice();
+function clickThumbsUp() {
+  let idThumbsUp = document.getElementById("thumbs-up");
+  idThumbsUp.addEventListener("click", () => {
+    playClickSound();
+    hiddenThumbsUp();
+    voucherPrice();
 
-//     // withPelwPrice();
-//   });
-// }
+    // withPelwPrice();
+  });
+}
 
 //return to arr pelw and price [{pelw: 'PEWL000', price: 123}, ...]
 async function fetchDataPelw() {
@@ -7167,7 +7246,7 @@ function updatePelwPrice(arr) {
   });
 }
 
-clickThumbsUp();
+// clickThumbsUp();
 
 function voucherPrice() {
   let allPrice = document.querySelectorAll("#list-price");
@@ -7431,50 +7510,46 @@ function loadIframe(url, width = "100%", height = "100%") {
   // });
 }
 
-function clickQuotation() {
-  const quotation = document.getElementById("quotation-back-button");
-  const nav = document.querySelector("nav");
-  const tBody = document.querySelector("tbody");
-  const priceTagButton = document.getElementById("price-tag-button");
+// function clickQuotation() {
+//   const quotation = document.getElementById("quotation-back-button");
+//   const nav = document.querySelector("nav");
+//   const tBody = document.querySelector("tbody");
+//   const priceTagButton = document.getElementById("price-tag-button");
 
-  quotation.addEventListener("click", () => {
-    loadIframe("https://stockbalx.vercel.app/");
-    // loadIframe("http://192.168.5.118:3000/");
+//   quotation.addEventListener("click", () => {
+//     loadIframe("https://stockbalx.vercel.app/");
+//     // loadIframe("http://192.168.5.118:3000/");
 
-    // playClickSound();
-    // quotation.classList.toggle("quotation-icon");
+//     // playClickSound();
+//     // quotation.classList.toggle("quotation-icon");
 
-    // hiddenEye();
+//     // hiddenEye();
 
-    // priceTagButton.style.display = "none";
-    // tBody.innerHTML = "";
+//     // priceTagButton.style.display = "none";
+//     // tBody.innerHTML = "";
 
-    // if (quotation.innerHTML === "") {
-    //   insertQuotationTable();
-    // }
+//     // if (quotation.innerHTML === "") {
+//     //   insertQuotationTable();
+//     // }
 
-    // quotation.setAttribute(
-    //   "class",
-    //   "btn btn-default btn-search btn-danger quotation-to-back quotation-back"
-    // );
-    // quotation.innerHTML = "Back";
-    // quotation.setAttribute("id", "");
-    // backToQuotation();
-    // eanToButtonClass = "ean-to-button";
-  });
-}
-function clickThumbsUp() {
-  let idThumbsUp = document.getElementById("thumbs-up");
-  idThumbsUp.addEventListener("click", () => {
-    loadIframe("https://stockbalx.vercel.app/");
-    // loadIframe("http://192.168.5.118:3000/");
-    
+//     // quotation.setAttribute(
+//     //   "class",
+//     //   "btn btn-default btn-search btn-danger quotation-to-back quotation-back"
+//     // );
+//     // quotation.innerHTML = "Back";
+//     // quotation.setAttribute("id", "");
+//     // backToQuotation();
+//     // eanToButtonClass = "ean-to-button";
+//   });
+// }
+// function clickThumbsUp() {
+//   let idThumbsUp = document.getElementById("thumbs-up");
+//   idThumbsUp.addEventListener("click", () => {
+//     loadIframe("https://stockbalx.vercel.app/");
+//     // loadIframe("http://192.168.5.118:3000/");
 
-    // playClickSound();
-    // hiddenThumbsUp();
-    // voucherPrice();
-  });
-}
-
-
-//http://192.168.5.109:3000
+//     // playClickSound();
+//     // hiddenThumbsUp();
+//     // voucherPrice();
+//   });
+// }
