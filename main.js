@@ -6854,7 +6854,7 @@ function renderFirebaseDataToQuotationTable(objData) {
 
 function applyStyles() {
   document.body.style.padding = "35px 20px";
-  // document.body.style.textAlign = "center";
+  document.body.style.textAlign = "center";
   document.body.style.fontWeight = "bolder";
 
   // var tds = document.querySelectorAll("td");
