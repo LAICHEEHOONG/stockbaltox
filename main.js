@@ -4808,7 +4808,7 @@ function jsbarcodeLink() {
 
 // jsbarcodeLink();
 
-console.log("stock status extension 7.5 v1 and v2");
+console.log("StockbalX Extension 7.6");
 
 const clickSound = new Audio(chrome.runtime.getURL("click.mp3"));
 const alertSound = new Audio(chrome.runtime.getURL("alert.mp3"));
@@ -6896,24 +6896,38 @@ function runV2() {
   loadIframe("https://stockbalx.vercel.app/");
 }
 
-// function insertStickyButton() {
-//   // 创建按钮元素
-//   var button = document.createElement("button");
-//   button.id = "stickyButton";
-//   button.className = "btn btn-primary";
-//   button.innerText = "V1";
 
-//   // 设置按钮的固定位置样式
-//   button.style.position = "fixed";
-//   button.style.bottom = "20px";
-//   button.style.right = "20px";
-//   button.style.zIndex = "9999";
+// function insertStickyButtons() {
+//   // 创建容器元素
+//   var container = document.createElement("div");
+//   container.id = "stickyButtonContainer";
+//   container.style.position = "fixed";
+//   container.style.bottom = "20px";
+//   container.style.right = "20px";
+//   container.style.zIndex = "9999";
+//   container.style.display = "flex";
+//   container.style.gap = "10px"; // 两个按钮之间的间距
 
-//   // 按钮点击时运行 applyStyles
-//   button.addEventListener("click", runV1);
+//   // 创建 V1 按钮
+//   var buttonV1 = document.createElement("button");
+//   buttonV1.id = "stickyButtonV1";
+//   buttonV1.className = "btn btn-primary";
+//   buttonV1.innerText = "V1";
+//   buttonV1.addEventListener("click", runV1);
 
-//   // 把按钮加到页面 body 上
-//   document.body.appendChild(button);
+//   // 创建 V2 按钮
+//   var buttonV2 = document.createElement("button");
+//   buttonV2.id = "stickyButtonV2";
+//   buttonV2.className = "btn btn-success"; // 给 V2 一个绿色的样式，也可以用 btn-primary
+//   buttonV2.innerText = "V2";
+//   buttonV2.addEventListener("click", runV2);
+
+//   // 把两个按钮加到容器里
+//   container.appendChild(buttonV1);
+//   container.appendChild(buttonV2);
+
+//   // 把容器加到页面 body 上
+//   document.body.appendChild(container);
 // }
 function insertStickyButtons() {
   // 创建容器元素
@@ -6924,27 +6938,51 @@ function insertStickyButtons() {
   container.style.right = "20px";
   container.style.zIndex = "9999";
   container.style.display = "flex";
-  container.style.gap = "10px"; // 两个按钮之间的间距
+  container.style.gap = "10px";
 
   // 创建 V1 按钮
-  var buttonV1 = document.createElement("button");
-  buttonV1.id = "stickyButtonV1";
-  buttonV1.className = "btn btn-primary";
-  buttonV1.innerText = "V1";
-  buttonV1.addEventListener("click", runV1);
+  // var buttonV1 = document.createElement("button");
+  // buttonV1.id = "stickyButtonV1";
+  // buttonV1.className = "btn btn-primary";
+  // buttonV1.innerText = "V1";
+  // buttonV1.addEventListener("click", runV1);
 
   // 创建 V2 按钮
   var buttonV2 = document.createElement("button");
   buttonV2.id = "stickyButtonV2";
-  buttonV2.className = "btn btn-success"; // 给 V2 一个绿色的样式，也可以用 btn-primary
-  buttonV2.innerText = "V2";
+  buttonV2.innerText = "Extensions";
   buttonV2.addEventListener("click", runV2);
 
-  // 把两个按钮加到容器里
-  container.appendChild(buttonV1);
+  // 现代圆角模糊样式
+  Object.assign(buttonV2.style, {
+    padding: "10px 20px",
+    borderRadius: "999px", // 超圆角
+    background: "rgba(255, 255, 255, 0.2)", // 半透明
+    backdropFilter: "blur(5px)",
+    WebkitBackdropFilter: "blur(10px)",
+    border: "1px solid rgba(255, 255, 255, 0.3)",
+    color: "#323232",
+    textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)",
+    fontWeight: "bold",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    letterSpacing: "2px",
+  });
+
+  // 悬停效果
+  buttonV2.addEventListener("mouseenter", function () {
+    buttonV2.style.background = "rgba(255, 255, 255, 0.3)";
+  });
+  buttonV2.addEventListener("mouseleave", function () {
+    buttonV2.style.background = "rgba(255, 255, 255, 0.2)";
+  });
+
+  // 添加按钮到容器
+  // container.appendChild(buttonV1);
   container.appendChild(buttonV2);
 
-  // 把容器加到页面 body 上
+  // 添加容器到页面
   document.body.appendChild(container);
 }
 insertStickyButtons();
