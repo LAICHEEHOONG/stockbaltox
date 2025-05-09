@@ -6894,6 +6894,7 @@ function runV1() {
 function runV2() {
   moveOriginalBody();
   loadIframe("https://stockbalx.vercel.app/");
+  // loadIframe("http://localhost:3000/")
 }
 
 
