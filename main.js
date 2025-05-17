@@ -4808,7 +4808,7 @@ function jsbarcodeLink() {
 
 // jsbarcodeLink();
 
-console.log("StockbalX Extension 7.6");
+console.log("StockbalX Extension 7.7");
 
 const clickSound = new Audio(chrome.runtime.getURL("click.mp3"));
 const alertSound = new Audio(chrome.runtime.getURL("alert.mp3"));
@@ -6892,11 +6892,25 @@ function runV1() {
 }
 
 function runV2() {
-  moveOriginalBody();
-  loadIframe("https://stockbalx.vercel.app/");
+  function isUnauthorized401() {
+    const fieldset = document.querySelector("fieldset");
+    if (!fieldset) return false;
+
+    const h2 = fieldset.querySelector("h2");
+    return h2 && h2.textContent.includes("401");
+  }
+
+  if (isUnauthorized401()) {
+    alert("401 - Unauthorized: Access is denied due to invalid credentials.");
+  } else {
+    moveOriginalBody();
+    loadIframe("https://stockbalx.vercel.app/");
+  }
+
+  // moveOriginalBody();
+  // loadIframe("https://stockbalx.vercel.app/");
   // loadIframe("http://localhost:3000/")
 }
-
 
 // function insertStickyButtons() {
 //   // 创建容器元素
